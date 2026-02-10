@@ -1,11 +1,14 @@
-{% extends "index.html" %}
-
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ 
+</head>
+<body>
     <div class="contentAdd"> 
-        <div class="content">
-            <p>Šīs ir kaut kāds teksts</p>
-        </div>
-
         <form method="POST">
             <input type="text" name="app_name" placeholder="Aplikācijas nosaukums" required>
             <br><br>
@@ -14,7 +17,10 @@
         </form>
 
         <form action="/" method="GET">
-            <button type="submit" class="btn-add">Paslēpt</button>
+            <button type="submit" class="btn-add">Atpakaļ</button>
         </form>
     </div>
-{% endblock %}
+
+</body>
+</html>
+

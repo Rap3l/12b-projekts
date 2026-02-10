@@ -26,12 +26,6 @@ def get_db_connection():
 
 
 
-
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-
 @app.route("/")
 def index():
     conn = get_db_connection()
@@ -40,28 +34,60 @@ def index():
     return render_template("index.html", passwords = passwords)
 
 
-
-
-
-
-
-# @app.route("/add")
-# def add():
-#     return render_template("add.html")
-
-
-@app.route("/add", methods = ["GET", "POST"])
-def add_new():
+@app.route("/add", methods=["GET", "POST"])
+def add():
+    conn = get_db_connection()
+ 
     if request.method == "POST":
         app_name = request.form["app_name"]
         password = request.form["password"]
-
-        conn = get_db_connection()
-        conn.execute("INSERT INTO passwords (app_name, password) VALUES (?, ?)", (app_name, password))
+ 
+        conn.execute(
+            "INSERT INTO passwords (app_name, password) VALUES (?, ?)",
+            (app_name, password)
+        )
         conn.commit()
         conn.close()
+        
         return redirect(url_for("index"))
+    
     return render_template("add.html")
+
+
+@app.route("/delete/<int:id>", methods=["POST"])
+def delete(id):
+    conn = get_db_connection()
+    conn.execute("DELETE FROM passwords WHERE id = ?", (id,))
+    conn.commit()
+    conn.close()
+
+
+    return redirect(url_for("index"))
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+
+
+
+# # @app.route("/add")
+# # def add():
+# #     return render_template("add.html")
+
+
+# @app.route("/add", methods = ["GET", "POST"])
+# def add_new():
+#     if request.method == "POST":
+#         app_name = request.form["app_name"]
+#         password = request.form["password"]
+
+#         conn = get_db_connection()
+#         conn.execute("INSERT INTO passwords (app_name, password) VALUES (?, ?)", (app_name, password))
+#         conn.commit()
+#         conn.close()
+#         return redirect(url_for("index"))
+#     return render_template("add.html")
 
 
 
