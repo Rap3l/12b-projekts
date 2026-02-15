@@ -7,39 +7,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
  
 </head>
-<body>
-    <h1>Manas paroles</h1>
+<body class="index-body">
+    
+    
+    <h1>{{ title }}</h1>
 
-    <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        }
-    </style>
+    <p class="textp">{{ description }}</p>
 
-    <table class="my-table">
-        <tr>
-            <th>Applikācija</th>
-            <th>Parole</th>
-            <th>Darbība</th>
-        </tr>
 
-        {% for i in passwords %}
-        <tr>
-            <td>{{ i.app_name}}</td>
-            <td>{{ i.password}}</td>
-            <td> 
-                <form method = "POST" action = "/delete/{{ i.id }}">
-                    <button type="submit">Dzēst</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="index-content">
+        <div class="table">
+            <table class="my-table">
+                <tr>
+                    <th>Applikācija</th>
+                    <th>Parole</th>
+                    <th>Darbība</th>
+                </tr>
 
-    <form action="/add" method="GET">
-        <button type="submit" class="btn-add">Pievienot jaunu</button>
-    </form>
+                {% for i in passwords %}
+                <tr>
+                    <td>{{ i.app_name}}</td>
+                    <td>{{ i.password}}</td>
+                    <td> 
+                        <form method = "POST" action = "/delete/{{ i.id }}">
+                            <button type="submit" class="btn-delete" >Dzēst</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>    
+
+
+        <form action="/add" method="GET">
+            <button type="submit" class="btn-add">Pievienot jaunu</button>
+        </form>
+    </div>
     
 </body>
 </html>

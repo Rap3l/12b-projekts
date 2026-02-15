@@ -1,14 +1,131 @@
-.my-table,
-.my-table th,
-.my-table td {
-  border: 1px solid black;
-  border-collapse: collapse;
+body {
+    background: #eef2f7;
 }
 
-.contentAdd{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  border: 3px solid green; 
+.index-body{
+    padding: 60px 40px;
 }
+
+
+h1{
+    font-size: 35px;
+}
+
+.textp{
+    font-size: 25px;
+}
+
+.contentAdd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    position: relative;
+    background: #f5f5f5;
+    padding: 30px 40px 60px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    min-width: 300px;
+}
+
+.content input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.submit {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-color: #ccdcff;
+    
+}
+
+.btn-back {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-color: #ccdcff;
+}
+
+.btn-add{
+    left: 10px;
+    bottom: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-color: #ccdcff;
+    background-color: #e2ebff;
+}
+
+.btn-delete{
+    left: 10px;
+    bottom: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-color: #ffb6b6;
+}
+
+
+.table{
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.index-content{
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.submit:hover{
+  background: #dbe6ff;
+  border-color: #b4caf9;
+}
+
+.btn-back:hover{ 
+  background: #dbe6ff;
+  border-color: #b4caf9;
+}
+
+.btn-add:hover{ 
+  background: #dbe6ff;
+  border-color: #b4caf9;
+}
+
+.btn-delete:hover{
+    background: #ffb4b4;
+    border-color: #ff6161;
+}
+
+.my-table th {
+    font-size: 20px;
+    padding: 12px 18px;
+}
+
+.my-table td {
+    font-size: 18px;
+    padding: 12px 18px;
+}
+
+table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        border-radius: 5px;
+        }

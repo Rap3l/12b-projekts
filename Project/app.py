@@ -1,8 +1,10 @@
 from flask import Flask, redirect, render_template, request, url_for
 import sqlite3
+import requests
 
 app = Flask(__name__)
 
+API_url = "https://api.npoint.io/ec052940c9bc0f580e40"
 
 #DATU BĀZES IZVEIDE
 
@@ -28,10 +30,27 @@ def get_db_connection():
 
 @app.route("/")
 def index():
+
+    response = requests.get(API_url)
+
+    if response.status_code == 200:
+        data = response.json()
+        title = data.get("title")
+        description = data.get("text")
+    else:
+        title = "Nav"
+        description = ""
+
     conn = get_db_connection()
     passwords = conn.execute("SELECT * FROM passwords").fetchall()
     conn.close()
-    return render_template("index.html", passwords = passwords)
+
+    return render_template("index.html", 
+                            passwords = passwords,
+                            title=title,
+                            description=description)
+
+
 
 
 @app.route("/add", methods=["GET", "POST"])
